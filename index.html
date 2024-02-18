@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <title>Maze Game</title>
+</head>
+<body>
+    <div class="maze-container" id="maze-container">
+        <!-- Maze grid will be generated here dynamically using JavaScript -->
+    </div>
+
+    <script>
+        // Your JavaScript code for generating the maze and handling the game logic
+        document.addEventListener("DOMContentLoaded", function () {
+            generateMaze();
+        });
+
+        function generateMaze() {
+            var mazeContainer = document.getElementById("maze-container");
+
+            for (var i = 0; i < 10; i++) {
+                for (var j = 0; j < 10; j++) {
+                    var cell = document.createElement("div");
+                    cell.className = "maze-cell";
+                    cell.id = "cell-" + i + "-" + j;
+
+                    // Add start cell, end cell, and coins
+                    if (i === 0 && j === 0) {
+                        cell.classList.add("start-cell");
+                    } else if (i === 9 && j === 9) {
+                        cell.classList.add("end-cell");
+                    } else if (Math.random() < 0.2) {  // 20% chance for a coin
+                        cell.classList.add("coin-cell");
+                    }
+
+                    mazeContainer.appendChild(cell);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
